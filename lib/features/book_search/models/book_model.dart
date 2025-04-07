@@ -20,10 +20,14 @@ class BookModel {
     return BookModel(
       id: json["id"],
       title: volumeInfo["title"] ?? "No title",
-      authors: volumeInfo["authors"] ?? "Unknown",
+      authors:
+          (volumeInfo['authors'] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .toList() ??
+          ['Unknown'],
       publishedDate: volumeInfo["publishedDate"],
       thumbnail: volumeInfo["imageLinks"]["thumbnail"],
-      infoLink: volumeInfo["infoLink"]
+      infoLink: volumeInfo["infoLink"],
     );
   }
 }
