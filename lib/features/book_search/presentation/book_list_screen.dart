@@ -23,7 +23,14 @@ class _BookListScreenState extends State<BookListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Google Books Search')),
+      appBar: AppBar(
+        title: GestureDetector(
+          onTap: () async {
+            await launchUrl(Uri.parse('https://google.com'));
+          },
+          child: Text('Google Books Search'),
+        ),
+      ),
       body: Column(
         children: [
           Padding(
